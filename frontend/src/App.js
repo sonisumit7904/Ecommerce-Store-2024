@@ -75,25 +75,24 @@ function App() {
   }, []);
 
 
-// PREVENT RIGHT MOUSE CLICK
+  // PREVENT RIGHT MOUSE CLICK
   window.addEventListener("contextmenu", (event) => event.preventDefault());
 
-
-// ========CLOSING NAVBAR AFTER LINK CLICK
+  // ========CLOSING NAVBAR AFTER LINK CLICK
   // Get all links within the class-nav
-const links = document.querySelectorAll('.nav a');
+  const links = document.querySelectorAll(".nav a");
 
-// Get the menunav button
-const menunavButton = document.querySelector('.menuBurger');
+  // Get the menunav button
+  const menunavButton = document.querySelector(".menuBurger");
 
-// Add click event listener to each link
-links.forEach(link => {
-  link.addEventListener('click', () => {
-    // Programmatically click the menunav button
-    menunavButton.click();
+  // Add click event listener to each link
+  links.forEach((link) => {
+    link.addEventListener("click", () => {
+      // Programmatically click the menunav button
+      menunavButton.click();
+    });
   });
-});
-//==========
+  //==========
 
   return (
     <Router>
