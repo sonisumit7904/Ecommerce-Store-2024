@@ -74,7 +74,26 @@ function App() {
     getStripeApiKey();
   }, []);
 
+
+// PREVENT RIGHT MOUSE CLICK
   window.addEventListener("contextmenu", (event) => event.preventDefault());
+
+
+// ========CLOSING NAVBAR AFTER LINK CLICK
+  // Get all links within the class-nav
+const links = document.querySelectorAll('.nav a');
+
+// Get the menunav button
+const menunavButton = document.querySelector('.menuBurger');
+
+// Add click event listener to each link
+links.forEach(link => {
+  link.addEventListener('click', () => {
+    // Programmatically click the menunav button
+    menunavButton.click();
+  });
+});
+//==========
 
   return (
     <Router>

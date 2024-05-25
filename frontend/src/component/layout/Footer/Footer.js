@@ -1,28 +1,37 @@
 import React from "react";
-import playStore from "../../../images/playstore.png";
-import appStore from "../../../images/Appstore.png";
 import "./Footer.css";
 
 const Footer = () => {
   return (
     <footer id="footer">
-      <div className="leftFooter">
-        <h4>DOWNLOAD OUR APP</h4>
-        <p>Download App for Android and IOS Mobile Phone</p>
-        <img src={playStore} alt="playstore" />
-        <img src={appStore} alt="Appstore" />
+      <section class="footer">
+      <div class="footer-row">
+        <div class="footer-col">
+          <h4>Connect With Me</h4>
+          <ul class="links">
+            <li><a href="https://drive.google.com/file/d/1ncWmgUBNQYQYNVDlD_aX27ZsA42u3guQ/view?usp=sharing">My Resume</a></li>
+            <li><a href="https://www.linkedin.com/in/sonisumit7904/">LinkedIn</a></li>
+            <li><a href="https://github.com/sonisumit7904">GitHub</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div className="midFooter">
+            <h1>ECOMMERCE</h1>
+            <p>High Quality is our first priority</p>
+            <p>Copyrights 2024 &copy; sonisumit7904</p>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact Me</h4>
+          <p>Let's have a talk!</p>
+          <form action="mailto:sonisumit7904@gmail.com">
+            <button type="submit">Mail Me</button>
+          </form>
+        </div>
       </div>
-      <div className="midFooter">
-        <h1>ECOMMERCE.</h1>
-        <p>High Quality is our first priority</p>
-        <p>Copyrights 2024 &copy; sonisumit7904 </p>
-      </div>
-      <div className="rightFooter">
-        <h4>Follow Us</h4>
-        <a href="http://instagram.com/sonisumit7904">Instagram</a>
-        <a href="http://instagram.com/sonisumit7904">Youtube</a>
-        <a href="http://instagram.com/sonisumit7904">Facebook</a>
-      </div>
+    </section>
     </footer>
   );
 };

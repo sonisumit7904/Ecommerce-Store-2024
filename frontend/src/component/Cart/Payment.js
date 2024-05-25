@@ -133,6 +133,22 @@ const Payment = ({ history }) => {
         <CircularProgress color="inherit" />
       </Backdrop>
 
+      <div className="demoContainer">
+        <div className="demoForm">
+          <button className="paymentFormBtn">
+            You can use Demo Card Details
+          </button>
+          <div className="demoInput">
+            <CreditCardIcon />
+            <input
+              readOnly
+              value={`4000 0035 6000 0008`}
+              className="paymentInput"
+            />
+          </div>
+        </div>
+      </div>
+
       <div className="paymentContainer">
         <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>
           <Typography>Card Info</Typography>

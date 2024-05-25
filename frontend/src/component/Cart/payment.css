@@ -1,3 +1,32 @@
+.demoContainer{
+  display: grid;
+  place-items: center;
+  background-color: rgb(255, 255, 255);
+  /* margin: 2vmax; */
+}
+.demoForm{
+  width: 22%;
+  height: 100%;
+}
+.demoInput > svg{
+  position: absolute;
+  transform: translateX(1vmax);
+  font-size: 1.6vmax;
+  color: rgba(0, 0, 0, 0.623);
+}
+.demoInput{
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.267);
+  border: none;
+  outline: none;
+}
+.demoForm > div {
+  display: flex;
+  align-items: center;
+}
+
+
 .paymentContainer {
   display: grid;
   place-items: center;
@@ -61,6 +90,31 @@
 }
 
 @media screen and (max-width: 600px) {
+  .demoContainer{
+    display: grid;
+    place-items: center;
+    background-color: rgb(255, 255, 255);
+    /* margin: 2vmax; */
+  }
+  .demoForm{
+    width: 90%;
+  }
+  .demoInput > svg{
+    font-size: 6vw;
+  }
+  .demoInput{
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.267);
+    border: none;
+    outline: none;
+  }
+  .demoForm > div {
+    display: flex;
+    align-items: center;
+  }
+
+
   .paymentForm {
     width: 90%;
   }
