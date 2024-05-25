@@ -75,7 +75,7 @@ function App() {
   }, []);
 
 
-  // PREVENT RIGHT MOUSE CLICK
+  // PREVENT RIGHT MOUSE CLICK on Website
   window.addEventListener("contextmenu", (event) => event.preventDefault());
 
   // ========CLOSING NAVBAR AFTER LINK CLICK
