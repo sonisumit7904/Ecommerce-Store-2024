@@ -129,7 +129,7 @@ const NewProduct = ({ history }) => {
               <input
                 type="number"
                 min="0"
-                max="100000"
+                max="99999"
                 placeholder="Price"
                 required
                 onChange={(e) => setPrice(e.target.value)}

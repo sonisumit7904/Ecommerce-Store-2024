@@ -33,8 +33,8 @@ const Products = ({ match }) => {
   };
 
   //for Price filter
-  const [tempPrice, setTempPrice] = useState([0, 100000]);
-  const [price, setPrice] = useState([0, 100000]);
+  const [tempPrice, setTempPrice] = useState([0, 99999]);
+  const [price, setPrice] = useState([0, 99999]);
   const priceHandler = (event, newPrice) => {
     setPrice(newPrice);
   };
@@ -77,18 +77,27 @@ const Products = ({ match }) => {
 
           {/* Price Filters */}
           <div className="filterBox">
-            <fieldset>
+              <Typography component="legend">Price</Typography>
               <Slider
+              sx={{
+    "& .MuiSlider-thumb": {
+      borderRadius: "10px"
+    },
+    "& .MuiSlider-valueLabelLabel": {
+      fontSize: "80px",
+      fontWeight: "bold",
+      color: "secondary"
+    }
+  }}
                 value={tempPrice}
                 onChange={tempPriceHandler}
                 onChangeCommitted={priceHandler}
                 valueLabelDisplay="auto"
                 aria-labelledby="range-slider"
+                // aria-label="custom thumb label"
                 min={0}
-                max={100000}
+                max={99999}
               />
-              <Typography component="legend">Price</Typography>
-            </fieldset>
             <Typography>Categories</Typography>
             <ul className="categoryBox">
               {categories.map((category) => (

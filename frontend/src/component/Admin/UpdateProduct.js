@@ -169,7 +169,7 @@ const UpdateProduct = ({ history, match }) => {
                 placeholder="Price"
                 required
                 min="0"
-                max="100000"
+                max="99999"
                 onChange={(e) => setPrice(e.target.value)}
                 value={price}
               />
