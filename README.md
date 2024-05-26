@@ -92,11 +92,6 @@ cd frontend
 npm install
 ```
 
-Start the server
-
-```bash
-  npm run start
-```
 
 # Building
 
@@ -119,7 +114,3 @@ npm run dev
 ## Security
 
 If you discover any security related issues, please email me at sonisumit7904@gmail.com
-
-## License
-
-MIT. Please see the [license file](license.md) for more information.
