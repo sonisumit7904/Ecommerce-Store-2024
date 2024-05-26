@@ -4,14 +4,14 @@ import logo from "../../../images/logo.png";
 
 const options = {
   burgerColor:"#E8E2E2",
-  burgerColorHover: "#eb4034",
+  burgerColorHover: "tomato",
   logo,
   logoWidth: "20vmax",
   navColor1: "white",
   link1AnimationTime:0.5,
   searchIconAnimationTime:0.5,
   logoHoverSize: "10px",
-  logoHoverColor: "#eb4034",
+  logoHoverColor: "#DD5746",
   link1Text: "Home",
   link2Text: "Products",
   link3Text: "Contact",
