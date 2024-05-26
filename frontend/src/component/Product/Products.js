@@ -12,6 +12,8 @@ import MetaData from "../layout/MetaData.js";
 
 const categories = [
   "Laptop",
+  "Gaming",
+  "Accessories",
   "Footwear",
   "Bottom",
   "Tops",
@@ -31,8 +33,8 @@ const Products = ({ match }) => {
   };
 
   //for Price filter
-  const [tempPrice, setTempPrice] = useState([0, 50000]);
-  const [price, setPrice] = useState([0, 50000]);
+  const [tempPrice, setTempPrice] = useState([0, 100000]);
+  const [price, setPrice] = useState([0, 100000]);
   const priceHandler = (event, newPrice) => {
     setPrice(newPrice);
   };
@@ -83,7 +85,7 @@ const Products = ({ match }) => {
                 valueLabelDisplay="auto"
                 aria-labelledby="range-slider"
                 min={0}
-                max={50000}
+                max={100000}
               />
               <Typography component="legend">Price</Typography>
             </fieldset>

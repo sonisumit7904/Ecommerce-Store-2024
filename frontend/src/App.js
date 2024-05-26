@@ -52,6 +52,7 @@ import About from "./component/layout/About/About";
 import NotFound from "./component/layout/Not Found/NotFound";
 
 function App() {
+
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -63,6 +64,26 @@ function App() {
 
   //we are using WebFontLoader for Roboto font from google
   React.useEffect(() => {
+              // PREVENT RIGHT MOUSE CLICK on Website
+          window.addEventListener("contextmenu", (event) => event.preventDefault());
+
+          // ========CLOSING NAVBAR AFTER LINK CLICK
+          // Get all links within the class-nav
+          const links = document.querySelectorAll(".nav a");
+
+          // Get the menunav button
+          const menunavButton = document.querySelector(".menuBurger");
+
+          // Add click event listener to each link
+          links.forEach((link) => {
+            link.addEventListener("click", () => {
+              // Programmatically click the menunav button
+              menunavButton.click();
+            });
+          });
+          //==========
+
+
     WebFont.load({
       google: {
         families: ["Roboto", "Droid Sans", "Chilanka"],
@@ -73,26 +94,6 @@ function App() {
 
     getStripeApiKey();
   }, []);
-
-
-  // PREVENT RIGHT MOUSE CLICK on Website
-  window.addEventListener("contextmenu", (event) => event.preventDefault());
-
-  // ========CLOSING NAVBAR AFTER LINK CLICK
-  // Get all links within the class-nav
-  const links = document.querySelectorAll(".nav a");
-
-  // Get the menunav button
-  const menunavButton = document.querySelector(".menuBurger");
-
-  // Add click event listener to each link
-  links.forEach((link) => {
-    link.addEventListener("click", () => {
-      // Programmatically click the menunav button
-      menunavButton.click();
-    });
-  });
-  //==========
 
   return (
     <Router>
@@ -141,9 +142,10 @@ function App() {
 
         <ProtectedRoute exact path="/orders" component={MyOrders} />
 
+        <ProtectedRoute exact path="/order/:orderId" component={OrderDetails} />
+        
         <ProtectedRoute exact path="/order/confirm" component={ConfirmOrder} />
 
-        <ProtectedRoute exact path="/order/:orderId" component={OrderDetails} />
 
         {/* ADMIN ROUTES */}
         <ProtectedRoute

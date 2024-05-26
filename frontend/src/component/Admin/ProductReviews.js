@@ -16,7 +16,12 @@ import Star from "@material-ui/icons/Star";
 import SideBar from "./Sidebar";
 import { DELETE_REVIEW_RESET } from "../../constants/productConstants";
 
+import Backdrop from "@material-ui/core/Backdrop";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 const ProductReviews = ({ history }) => {
+  const [backdrop, setBackDrop] = useState(false);
+
   const dispatch = useDispatch();
 
   const alert = useAlert();
@@ -32,6 +37,8 @@ const ProductReviews = ({ history }) => {
   const [productId, setProductId] = useState("");
 
   const deleteReviewHandler = (reviewId) => {
+    setBackDrop(true);
+
     dispatch(deleteReviews(reviewId, productId));
   };
 
@@ -41,6 +48,8 @@ const ProductReviews = ({ history }) => {
   };
 
   useEffect(() => {
+    setBackDrop(false);
+
     if (productId.length === 24) {
       dispatch(getAllReviews(productId));
     }
@@ -133,6 +142,12 @@ const ProductReviews = ({ history }) => {
 
       <div className="dashboard">
         <SideBar />
+
+        {/* PROGRESS  */}
+        <Backdrop open={backdrop} style={{ zIndex: "10" }}>
+          <CircularProgress color="inherit" />
+        </Backdrop>
+
         <div className="productReviewsContainer">
           <form
             className="productReviewsForm"

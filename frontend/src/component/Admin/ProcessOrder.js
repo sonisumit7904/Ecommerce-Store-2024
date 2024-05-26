@@ -16,12 +16,18 @@ import { Button } from "@material-ui/core";
 import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
 import "./processOrder.css";
 
+import Backdrop from "@material-ui/core/Backdrop";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 const ProcessOrder = ({ history, match }) => {
+  const [backdrop, setBackDrop] = useState(false);
+
   const { order, error, loading } = useSelector((state) => state.orderDetails);
   const { error: updateError, isUpdated } = useSelector((state) => state.order);
 
   const updateOrderSubmitHandler = (e) => {
     e.preventDefault();
+    setBackDrop(true);
 
     const myForm = new FormData();
 
@@ -36,6 +42,8 @@ const ProcessOrder = ({ history, match }) => {
   const [status, setStatus] = useState("");
 
   useEffect(() => {
+    setBackDrop(false);
+
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
@@ -57,6 +65,12 @@ const ProcessOrder = ({ history, match }) => {
       <MetaData title="Process Order" />
       <div className="dashboard">
         <SideBar />
+
+        {/* PROGRESS  */}
+        <Backdrop open={backdrop} style={{ zIndex: "10" }}>
+          <CircularProgress color="inherit" />
+        </Backdrop>
+
         <div className="newProductContainer">
           {loading ? (
             <Loader />

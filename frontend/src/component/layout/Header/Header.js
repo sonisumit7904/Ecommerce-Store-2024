@@ -3,7 +3,7 @@ import ReactNavbar from "../../../lib/ReactNavbar";
 import logo from "../../../images/logo.png";
 
 const options = {
-  burgerColor:"#E8E2E2",
+  burgerColor:"rgba(200, 200, 200, 0.5)",
   burgerColorHover: "tomato",
   logo,
   logoWidth: "20vmax",

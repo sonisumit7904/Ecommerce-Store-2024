@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import "./productList.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -12,7 +12,12 @@ import SideBar from "./Sidebar";
 import { getAllUsers, clearErrors, deleteUser } from "../../actions/userAction";
 import { DELETE_USER_RESET } from "../../constants/userConstants";
 
+import Backdrop from "@material-ui/core/Backdrop";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 const UsersList = ({ history }) => {
+  const [backdrop, setBackDrop] = useState(false);
+
   const dispatch = useDispatch();
 
   const alert = useAlert();
@@ -26,10 +31,14 @@ const UsersList = ({ history }) => {
   } = useSelector((state) => state.profile);
 
   const deleteUserHandler = (id) => {
+    setBackDrop(true);
+
     dispatch(deleteUser(id));
   };
 
   useEffect(() => {
+    setBackDrop(false);
+
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
@@ -123,6 +132,13 @@ const UsersList = ({ history }) => {
 
       <div className="dashboard">
         <SideBar />
+
+            {/* PROGRESS  */}
+            <Backdrop open={backdrop} style={{ zIndex: "10" }}>
+          <CircularProgress color="inherit" />
+        </Backdrop>
+
+
         <div className="productListContainer">
           <h1 id="productListHeading">ALL USERS</h1>
 

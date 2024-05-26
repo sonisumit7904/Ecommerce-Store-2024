@@ -16,7 +16,11 @@ import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import SideBar from "./Sidebar";
 import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
 
+import Backdrop from "@material-ui/core/Backdrop";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 const UpdateProduct = ({ history, match }) => {
+  const [backdrop, setBackDrop] = useState(false);
   const dispatch = useDispatch();
   const alert = useAlert();
 
@@ -39,6 +43,8 @@ const UpdateProduct = ({ history, match }) => {
 
   const categories = [
     "Laptop",
+    "Gaming",
+    "Accessories",
     "Footwear",
     "Bottom",
     "Tops",
@@ -50,6 +56,8 @@ const UpdateProduct = ({ history, match }) => {
   const productId = match.params.id;
 
   useEffect(() => {
+    setBackDrop(false);
+
     if (product && product._id !== productId) {
       dispatch(getProductDetails(productId));
     } else {
@@ -88,6 +96,7 @@ const UpdateProduct = ({ history, match }) => {
 
   const updateProductSubmitHandler = (e) => {
     e.preventDefault();
+    setBackDrop(true);
 
     const myForm = new FormData();
 
@@ -129,6 +138,12 @@ const UpdateProduct = ({ history, match }) => {
       <MetaData title="Create Product" />
       <div className="dashboard">
         <SideBar />
+
+        {/* PROGRESS  */}
+        <Backdrop open={backdrop} style={{ zIndex: "10" }}>
+          <CircularProgress color="inherit" />
+        </Backdrop>
+
         <div className="newProductContainer">
           <form
             className="createProductForm"
@@ -154,7 +169,7 @@ const UpdateProduct = ({ history, match }) => {
                 placeholder="Price"
                 required
                 min="0"
-                max="50000"
+                max="100000"
                 onChange={(e) => setPrice(e.target.value)}
                 value={price}
               />

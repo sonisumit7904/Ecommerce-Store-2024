@@ -9,7 +9,7 @@ import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import DescriptionIcon from "@material-ui/icons/Description";
 import StorageIcon from "@material-ui/icons/Storage";
 import SpellcheckIcon from "@material-ui/icons/Spellcheck";
-import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
+import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import SideBar from "./Sidebar";
 import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
 
@@ -34,6 +34,8 @@ const NewProduct = ({ history }) => {
 
   const categories = [
     "Laptop",
+    "Gaming",
+    "Accessories",
     "Footwear",
     "Bottom",
     "Tops",
@@ -123,11 +125,11 @@ const NewProduct = ({ history }) => {
               />
             </div>
             <div>
-              <AccountBalanceIcon />
+              <AttachMoneyIcon />
               <input
                 type="number"
                 min="0"
-                max="50000"
+                max="100000"
                 placeholder="Price"
                 required
                 onChange={(e) => setPrice(e.target.value)}
