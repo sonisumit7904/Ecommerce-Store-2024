@@ -194,10 +194,16 @@ function App() {
         />
         {stripeApiKey && (
           <Elements stripe={loadStripe(stripeApiKey)}>
-            <ProtectedRoute exact path="/process/payment" component={Payment} />
+            <Switch>
+              <ProtectedRoute
+                exact
+                path="/process/payment"
+                component={Payment}
+              />
+              <Route component={NotFound} />
+            </Switch>
           </Elements>
         )}
-        <Route component={NotFound} />
       </Switch>
 
       <Footer />
