@@ -79,22 +79,11 @@ const Products = ({ match }) => {
           <div className="filterBox">
               <Typography component="legend">Price</Typography>
               <Slider
-              sx={{
-    "& .MuiSlider-thumb": {
-      borderRadius: "10px"
-    },
-    "& .MuiSlider-valueLabelLabel": {
-      fontSize: "80px",
-      fontWeight: "bold",
-      color: "secondary"
-    }
-  }}
                 value={tempPrice}
                 onChange={tempPriceHandler}
                 onChangeCommitted={priceHandler}
                 valueLabelDisplay="auto"
                 aria-labelledby="range-slider"
-                // aria-label="custom thumb label"
                 min={0}
                 max={99999}
               />
