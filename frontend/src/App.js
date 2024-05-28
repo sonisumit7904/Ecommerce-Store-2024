@@ -204,8 +204,8 @@ function App() {
             </Switch>
           </Elements>
         )}
+        <Route component={NotFound} />
       </Switch>
-
       <Footer />
     </Router>
   );
