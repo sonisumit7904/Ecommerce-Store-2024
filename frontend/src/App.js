@@ -6,7 +6,6 @@ import Home from "./component/Home/Home.js";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import WebFont from "webfontloader";
 import React, { useState } from "react";
-// import Loader from "./component/layout/Loader/Loader.js";
 
 import ProductDetails from "./component/Product/ProductDetails.js";
 import Products from "./component/Product/Products.js";
@@ -52,7 +51,6 @@ import About from "./component/layout/About/About";
 import NotFound from "./component/layout/Not Found/NotFound";
 
 function App() {
-
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -64,26 +62,6 @@ function App() {
 
   //we are using WebFontLoader for Roboto font from google
   React.useEffect(() => {
-              // PREVENT RIGHT MOUSE CLICK on Website
-          window.addEventListener("contextmenu", (event) => event.preventDefault());
-
-          // ========CLOSING NAVBAR AFTER LINK CLICK
-          // Get all links within the class-nav
-          const links = document.querySelectorAll(".nav a");
-
-          // Get the menunav button
-          const menunavButton = document.querySelector(".menuBurger");
-
-          // Add click event listener to each link
-          links.forEach((link) => {
-            link.addEventListener("click", () => {
-              // Programmatically click the menunav button
-              menunavButton.click();
-            });
-          });
-          //==========
-
-
     WebFont.load({
       google: {
         families: ["Roboto", "Droid Sans", "Chilanka"],
@@ -93,6 +71,25 @@ function App() {
     store.dispatch(loadUser());
 
     getStripeApiKey();
+
+    // PREVENT RIGHT MOUSE CLICK on Website
+    window.addEventListener("contextmenu", (event) => event.preventDefault());
+
+    // ========CLOSING NAVBAR AFTER LINK CLICK
+    // Get all links within the class-nav
+    const links = document.querySelectorAll(".nav a");
+
+    // Get the menunav button
+    const menunavButton = document.querySelector(".menuBurger");
+
+    // Add click event listener to each link
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        // Programmatically click the menunav button
+        menunavButton.click();
+      });
+    });
+    //==========
   }, []);
 
   return (
@@ -100,12 +97,6 @@ function App() {
       <Header />
 
       {isAuthenticated && <UserOptions user={user} />}
-
-      {stripeApiKey && (
-        <Elements stripe={loadStripe(stripeApiKey)}>
-          <ProtectedRoute exact path="/process/payment" component={Payment} />
-        </Elements>
-      )}
 
       {/* Switch is used, so that at a time, only 1 renders */}
       <Switch>
@@ -142,10 +133,9 @@ function App() {
 
         <ProtectedRoute exact path="/orders" component={MyOrders} />
 
-        <ProtectedRoute exact path="/order/:orderId" component={OrderDetails} />
-        
         <ProtectedRoute exact path="/order/confirm" component={ConfirmOrder} />
 
+        <ProtectedRoute exact path="/order/:orderId" component={OrderDetails} />
 
         {/* ADMIN ROUTES */}
         <ProtectedRoute
@@ -202,11 +192,12 @@ function App() {
           path="/admin/reviews"
           component={ProductReviews}
         />
-        <Route
-          component={
-            window.location.pathname === "/process/payment" ? null : NotFound
-          }
-        />
+        {stripeApiKey && (
+          <Elements stripe={loadStripe(stripeApiKey)}>
+            <ProtectedRoute exact path="/process/payment" component={Payment} />
+          </Elements>
+        )}
+        <Route component={NotFound} />
       </Switch>
 
       <Footer />
