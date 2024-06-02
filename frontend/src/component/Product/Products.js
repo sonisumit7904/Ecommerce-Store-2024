@@ -36,6 +36,7 @@ const Products = ({ match }) => {
   const [tempPrice, setTempPrice] = useState([0, 99999]);
   const [price, setPrice] = useState([0, 99999]);
   const priceHandler = (event, newPrice) => {
+    setCurrentPage(1);
     setPrice(newPrice);
   };
   const tempPriceHandler = (event, newPrice) => {
@@ -77,23 +78,26 @@ const Products = ({ match }) => {
 
           {/* Price Filters */}
           <div className="filterBox">
-              <Typography component="legend">Price</Typography>
-              <Slider
-                value={tempPrice}
-                onChange={tempPriceHandler}
-                onChangeCommitted={priceHandler}
-                valueLabelDisplay="auto"
-                aria-labelledby="range-slider"
-                min={0}
-                max={99999}
-              />
+            <Typography component="legend">Price</Typography>
+            <Slider
+              value={tempPrice}
+              onChange={tempPriceHandler}
+              onChangeCommitted={priceHandler}
+              valueLabelDisplay="auto"
+              aria-labelledby="range-slider"
+              min={0}
+              max={99999}
+            />
             <Typography>Categories</Typography>
             <ul className="categoryBox">
               {categories.map((category) => (
                 <li
                   className="category-link"
                   key={category}
-                  onClick={() => setCategory(category)}
+                  onClick={() => {
+                    setCurrentPage(1);
+                    setCategory(category);
+                  }}
                 >
                   {category}
                 </li>
@@ -107,6 +111,7 @@ const Products = ({ match }) => {
                   setTempRatings(newRating);
                 }}
                 onChangeCommitted={(e, newRating) => {
+                  setCurrentPage(1);
                   setRatings(newRating);
                 }}
                 aria-labelledby="continous-slider"
