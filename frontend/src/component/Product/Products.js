@@ -90,6 +90,16 @@ const Products = ({ match }) => {
             />
             <Typography>Categories</Typography>
             <ul className="categoryBox">
+              <li
+                className="category-link"
+                key=""
+                onClick={() => {
+                  setCurrentPage(1);
+                  setCategory("");
+                }}
+              >
+                All
+              </li>
               {categories.map((category) => (
                 <li
                   className="category-link"
