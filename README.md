@@ -111,6 +111,9 @@ npm run dev
 
 **_Server should start running, and store will be live at localhost:4000/_**
 
+## DEMO 
+VIDEO - https://youtu.be/qJjeZCHpJ1M?feature=shared
+
 ## Security
 
 If you discover any security related issues, please email me at sonisumit7904@gmail.com
