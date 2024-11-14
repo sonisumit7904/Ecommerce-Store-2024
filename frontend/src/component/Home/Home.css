@@ -3,14 +3,13 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 100vh;
+  height: 100vmin;
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: center;
   justify-content: center;
   color: white;
-  position: relative;
 }
 
 .banner .title {
@@ -57,128 +56,117 @@
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-.banner a button {
-  margin-top: 60px;
+.banner > a > button {
+  margin-bottom: 5vmax;
   cursor: pointer;
   background-color: white;
-  border: 2px solid white;
-  border-radius: 30px;
-  padding: 0.8rem 1.5rem;
-  transition: all 0.3s;
-  font: 500 1rem "Roboto", sans-serif;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  border: 1px solid white;
+  border-radius: 0;
+  padding: 1vmax;
+  transition: all 0.5s;
+  width: 9vmax;
+  font: 500 1vmax "Roboto";
 }
-
 .banner > a > button:hover {
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0);
   color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .banner::after {
   content: "";
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  width: 100vw;
+  height: 100vmin;
+  background-color: #ffffff;
   position: absolute;
-  top: 0;
+  top: 0%;
   left: 0;
-  z-index: 1;
-}
-
-.banner > *,
-.banner .title > * {
-  position: relative;
-  z-index: 2;
+  clip-path: polygon(100% 68%, 0 100%, 100% 100%);
+  max-width: 100%;
 }
 
 .homeHeading {
   text-align: center;
-  font-family: Roboto, sans-serif;
-  font-size: 2rem;
-  border-bottom: 2px solid rgba(21, 21, 21, 0.5);
-  width: max-content;
-  padding: 1rem 2rem;
-  margin: 5rem auto;
+  font-family: Roboto;
+  font-size: 1.4vmax;
+  border-bottom: 1px solid rgba(21, 21, 21, 0.5);
+  width: 20vmax;
+  padding: 1vmax;
+  margin: 5vmax auto;
   color: rgb(0, 0, 0, 0.7);
 }
 
 .container {
   display: flex;
-  margin: 2rem auto;
-  width: 90%;
-  max-width: 1200px;
+  margin: 2vmax auto;
+  width: 80vw;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
+  max-width: 100%;
 }
 
 .productCard {
-  width: 250px;
+  width: 14vmax;
   display: flex;
   flex-direction: column;
   text-decoration: none;
   color: rgb(48, 48, 48);
-  background-color: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: all 0.3s;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 2vmax;
+  transition: all 0.5s;
+  padding-bottom: 0.5vmax;
 }
 
 .productCard > img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+  width: 14vmax;
 }
 
 .productCard > div {
-  padding: 1rem;
+  margin: 0.5vmax;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .productCardSpan {
-  font: 300 0.8rem "Roboto", sans-serif;
-  color: #666;
+  margin: 0.5vmax;
+  font: 300 0.7vmax "Roboto";
 }
 
 .productCard > p {
-  font-family: "Roboto", sans-serif;
-  font-size: 1.2rem;
-  margin: 0.5rem 0;
-  font-weight: 500;
+  font-family: "Roboto";
+  font-size: 1.2vmax;
+  margin: 1vmax 0.5vmax;
+  margin-bottom: 0;
 }
 
 .productCard > span {
-  color: #e53935;
-  font-family: "Roboto", sans-serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-top: auto;
-  padding: 1rem;
+  margin: 0.5vmax;
+  color: tomato;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 1vmax;
 }
 
 .productCard:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  transform: translateY(-5px);
+  box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
+
+  transform: translateY(-1vmax);
 }
 
-@media screen and (max-width: 768px) {
-  .banner .title {
-    flex-direction: column;
+@media screen and (max-width: 600px) {
+  .productCard > p {
+    font-size: 1.7vmax;
   }
 
-  .banner h1 {
-    font-size: 2.5rem;
+  .productCard > div {
+    margin: 0vmax;
+    display: block;
   }
 
-  .banner p {
-    font-size: 1.2rem;
+  .productCard > span {
+    font-size: 1.5vmax;
   }
 
-  .homeHeading {
-    font-size: 1.5rem;
+  .productCard > div > span {
+    margin: 0 0.5vmax;
+    font: 300 1vmax "Roboto";
   }
 }
