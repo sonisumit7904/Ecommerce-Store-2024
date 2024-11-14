@@ -11,7 +11,6 @@ import { useAlert } from "react-alert";
 const Home = () => {
   const alert = useAlert();
   const dispatch = useDispatch();
-  // for all products
   const { loading, error, products } = useSelector((state) => state.products);
 
   useEffect(() => {
@@ -29,11 +28,23 @@ const Home = () => {
       ) : (
         <Fragment>
           <MetaData title="ECOMMERCE" />
-
           <div className="banner">
-            <p>Welcome to Ecommerce</p>
-            <h1>FIND AMAZING PRODUCTS BELOW</h1>
-
+            <div className="title">
+              <div className="youtube">
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/qJjeZCHpJ1M?si=VJHmnRcx2177H9nT"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                ></iframe>
+              </div>
+              <div className="content">
+                <p>Welcome to Ecommerce</p>
+                <h1>FIND AMAZING PRODUCTS BELOW</h1>
+              </div>
+            </div>
             <a href="#container">
               <button>
                 Scroll <CgMouse />
