@@ -21,13 +21,14 @@ import {
 } from "@material-ui/core";
 import { Rating } from "@material-ui/lab";
 import { NEW_REVIEW_RESET } from "../../constants/productConstants";
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const ProductDetails = ({ match }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const alert = useAlert();
-  const { user } = useSelector((state) => state.user);
+  const { user, isAuthenticated } = useSelector((state) => state.user);
+  console.log(user);
 
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
@@ -64,13 +65,12 @@ const ProductDetails = ({ match }) => {
   };
 
   const addToCartHandler = () => {
-    if(user?.isAuthenticated === true){
-        dispatch(addItemsToCart(match.params.id, quantity));
-        alert.success("Item Added To Cart");
-    }
-    else{
-        alert.error("Please Login to Add Item to Cart");
-        history.push("/login");
+    if (isAuthenticated === false) {
+      alert.error("Please Login to Add Item to Cart");
+      history.push("/login");
+    } else {
+      dispatch(addItemsToCart(match.params.id, quantity));
+      alert.success("Item Added To Cart");
     }
   };
 
@@ -79,20 +79,19 @@ const ProductDetails = ({ match }) => {
   };
 
   const reviewSubmitHandler = () => {
-    if(user?.isAuthenticated===true){
+    if (isAuthenticated === false) {
+      alert.error("Please Login to Submit Review");
+      history.push("/login");
+    } else {
       const myForm = new FormData();
-  
+
       myForm.set("rating", rating);
       myForm.set("comment", comment);
       myForm.set("productId", match.params.id);
-  
+
       dispatch(newReview(myForm));
-  
+
       setOpen(false);
-    }
-    else{
-      alert.error("Please Login to Submit Review");
-      history.push("/login");
     }
   };
 
